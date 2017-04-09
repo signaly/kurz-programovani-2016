@@ -1,0 +1,8 @@
+{
+	"require": {
+		"nette/nette": "~2.4",
+		"nextras/dbal": "~2.1",
+		"nextras/secured-links": "~1.4",
+		"nextras/forms": "~2.0"
+	}
+}

@@ -1,0 +1,31 @@
+{block content}
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Username</th>
+				<th>E-mail</th>
+				<th>Adresy</th>
+				<th>Akce</th>
+			</tr>
+		</thead>
+		<tbody>
+		{foreach $users as $member}
+			<tr>
+				<td>{$member->id}</td>
+				<td>{$member->username}</td>
+				<td>{$member->email}</td>
+				<td>{$member->addresses|breaklines}</td>
+				<td>
+					<a href="{link NewAddress:default $member->id}" class="btn btn-default">Přidat adresu</a>
+					<a href="{link DeleteAddress:default $member->id}" class="btn btn-default">Správa adresy</a>
+					<a href="{link EditUser:default $member->id}" class="btn btn-default">Upravit</a>
+					<a href="{link delete! $member->id}" class="btn btn-danger">Smazat</a>
+				</td>
+			</td>
+		{/foreach}
+		</tbody>
+	</table>
+
+{/block}
