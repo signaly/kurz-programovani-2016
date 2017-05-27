@@ -1,0 +1,19 @@
+extensions:
+	nextras.dbal: Nextras\Dbal\Bridges\NetteDI\DbalExtension
+	nextras.orm: Nextras\Orm\Bridges\NetteDI\OrmExtension
+
+
+nextras.orm:
+	model: Model
+
+services:
+
+	myrouter: RouterFactory
+	routing.router: @myrouter::create()
+
+nextras.dbal:
+	driver: mysqli
+	host: localhost
+	database: kurz04
+	username: root
+	password:

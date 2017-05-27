@@ -1,0 +1,42 @@
+{block content}
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Username</th>
+				<th>E-mail</th>
+				<th>Adresy</th>
+				<th>Akce</th>
+			</tr>
+		</thead>
+		<tbody>
+		{foreach $users as $member}
+			<tr>
+				<td>{$member->id}</td>
+				<td>{$member->username}</td>
+				<td>{$member->email}</td>
+				<td>
+					<a href="{link NewAddress:default $member->id}" class="btn btn-default">Přidat adresu</a>
+					<ul>
+						{*Celkový počet: {$member->addresses->countStored()}*}
+					{if $member->limitedAddresses->count() === 0}
+						Nemáme žádné adresy
+					{/if}
+					{foreach $member->limitedAddresses as $address}
+						<li>
+							{$address->address}
+							<a href="{link EditAddress:default $address->id}" class="btn btn-default btn-xs">Upravit</a>
+							<a href="{link DeleteAddress:default $address->id}" class="btn btn-default btn-xs">Smazat</a>
+						</li>
+					{/foreach}
+					</ul>
+				<td>
+					<a href="{link delete! $member->id}" class="btn btn-danger">Smazat uživatele</a>
+				</td>
+			</tr>
+		{/foreach}
+		</tbody>
+	</table>
+
+{/block}
